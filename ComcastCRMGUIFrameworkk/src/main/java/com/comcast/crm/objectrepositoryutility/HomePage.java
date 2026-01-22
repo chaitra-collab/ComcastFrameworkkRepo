@@ -16,7 +16,13 @@ public class HomePage {
 		this.driver=driver;//getdriverobjectinpomclasses
 		PageFactory.initElements(driver, this);//thisforcurrentobjectreference//LoginPage.class
 	}
-     @FindBy(linkText="Organizations")
+	 @FindBy(linkText="Products")
+     private WebElement productLink;
+	 
+     public WebElement getProductLink() {
+		return productLink;
+	}
+	 @FindBy(linkText="Organizations")
      private WebElement orgLink;
      
      @FindBy(linkText="Contact")
