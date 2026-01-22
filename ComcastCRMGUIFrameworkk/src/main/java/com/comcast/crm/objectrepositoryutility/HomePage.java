@@ -18,10 +18,23 @@ public class HomePage {
 	}
 	 @FindBy(linkText="Products")
      private WebElement productLink;
+	 
 	 @FindBy(linkText="Email")
      private WebElement emailLink;
 	 
-     public WebElement getProductLink() {
+     public WebElement getEmailLink() {
+		return emailLink;
+	}
+
+	 public WebElement getAdminImg() {
+		 return adminImg;
+	 }
+
+	 public WebElement getSignOutLink() {
+		 return signOutLink;
+	 }
+
+	 public WebElement getProductLink() {
 		return productLink;
 	}
 	 @FindBy(linkText="Organizations")
