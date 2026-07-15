@@ -16,7 +16,7 @@ public class JavaUtility {
 		
 		Date dateObj = new Date();
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM--dd");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(dateObj);
 		return date;
 	}
@@ -24,7 +24,7 @@ public class JavaUtility {
         
  		SimpleDateFormat sim=new SimpleDateFormat("yyyy-MM-dd");
  		
- 		Calendar cal=sim.getCalendar();
+ 		Calendar cal = Calendar.getInstance();;
  		cal.add(Calendar.DAY_OF_MONTH,days);//30daysafter
  		String  reqDate=sim.format(cal.getTime());
 		return reqDate;

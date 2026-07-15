@@ -3,8 +3,8 @@
 <suite name="Suite">
   <test  name="Test">
     <classes>
-      <class name="com.comcast.crm.contacttest.CreateContactTest"/>
-      <class name="com.comcast.crm.orgtest.CreateOrganizationTest"/>
+      <class name="com.comcast.crm.contacttest1.CreateContactTest"/>
+      <class name="com.comcast.crm.orgTest1.CreateOrganizationTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

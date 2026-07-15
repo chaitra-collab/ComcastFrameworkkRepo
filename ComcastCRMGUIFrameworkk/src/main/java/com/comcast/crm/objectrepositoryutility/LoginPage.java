@@ -15,15 +15,22 @@ import org.openqa.selenium.support.PageFactory;
 import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 
 public class LoginPage extends WebDriverUtility{//nameofclassshouldbenameofpagename
+	//pomclasscraetion
+	//objectidenetification
+	//objectinitialization
+	//objectencapsulation
+	//objectutilization 
 	//rule1 create a separate java class
-	//rule2 object Creation using @Findby
+	//rule2 object identification using @Findby
 	//createonemoredriverobjectglobal
 	WebDriver driver;
 	//asperrule3initialiaztaionshouldbedoneinconstructor
+	//craeteconstrutcortogetobjectofPOMclass
 	public LoginPage(WebDriver driver){//loadingtheobject//driverpassedfromtestscript
 		//everytestscriptlaunchesnewbrowser//driverisocatothisconstructor
 	//executionofallfindbyannotationandloadelementwithcurrentaddress 
 		this.driver=driver;//getdriverobjectinpomclasses
+		//initstaticmethod
 		PageFactory.initElements(driver, this);//thisforcurrentobjectreference//LoginPage.class
 	}
 	
@@ -39,6 +46,7 @@ public class LoginPage extends WebDriverUtility{//nameofclassshouldbenameofpagen
 	
 	//Rule4: Object Encapsulation
 		//mouserightclick//source//generategetters
+
 	public WebElement getUsernameEdt() {
 		return usernameEdt;
 	}
@@ -50,19 +58,23 @@ public class LoginPage extends WebDriverUtility{//nameofclassshouldbenameofpagen
 	public WebElement getLoginBtn() {
 		return loginBtn;
 	}
+	//usinggetterssingleelmentutilizationacceess
 	/**
 	 * login to application based on username,passowrd,url arguments
 	 * @param url
 	 * @param username
 	 * @param password
 	 */
+	
 	//rule5 :provide Action//bybusinesslibrary//specifictobusiness
+	//multipleeleementutilizationviabusinessmethod//usingbusimessmultipleelemeentaccess
+	//codeisoptimized//resusablebusinesslibarraies
 	//thismethodcannotbeusedforotherapplication
 	public void loginToapp(String url,String username , String password) {
 		//driverobjectinsidebusinessmethod
 		waitForPageToLoad(driver);
 		driver.get(url);
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		usernameEdt.sendKeys(username);
 		passwordEdt.sendKeys(password);
 		loginBtn.click();

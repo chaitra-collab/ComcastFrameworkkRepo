@@ -17,13 +17,39 @@ public class OrganizationInfoPage {
 	}
 	
 	@FindBy(className = "dvHeaderText")
-	private WebElement headerMsg;
+	private WebElement headerMsg1;
+	
+	@FindBy(id="dtlview_Phone")
+	private WebElement headerMsg2;
+    
+	@FindBy(id="dtlview_Industry")
+	private WebElement headerMsg3;
+	
+	@FindBy(id="dtlview_Type")
+	private WebElement headerMsg4;
+	
 	public WebDriver getDriver() {
 		return driver;
 	}
 
+	public WebElement getHeaderMsg1() {
+		return headerMsg1;
+	}
+
+	public WebElement getHeaderMsg3() {
+		return headerMsg3;
+	}
+
+	public WebElement getHeaderMsg4() {
+		return headerMsg4;
+	}
+
 	public WebElement getHeaderMsg() {
-		return headerMsg;
+		return headerMsg1;
+	}
+
+	public WebElement getHeaderMsg2() {
+		return headerMsg2;
 	}
 
 }

@@ -1,14 +1,26 @@
 package com.comcast.crm.objectrepositoryutility;
 
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HomePage {
+import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
+
+public class HomePage extends WebDriverUtility {
 	  
 	WebDriver driver;
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
+	}
+
 	//asperrule3initialiaztaionshouldbedoneinconstructor
 	public HomePage(WebDriver driver){//loadingtheobject//driverpassedfromtestscript
 		//everytestscriptlaunchesnewbrowser//driverisocatothisconstructor
@@ -40,7 +52,7 @@ public class HomePage {
 	 @FindBy(linkText="Organizations")
      private WebElement orgLink;
      
-     @FindBy(linkText="Contact")
+     @FindBy(linkText="Contacts")
      private WebElement contactLink;
      
      @FindBy(linkText="Campaigns")
@@ -49,6 +61,7 @@ public class HomePage {
      @FindBy(linkText="More")
      private WebElement moreLink;
      
+
      @FindBy(xpath = "//img[@src='themes/softed/images/user.PNG']")
      private WebElement adminImg;
      
@@ -78,18 +91,49 @@ public class HomePage {
 	 
    //gettersprovidesingleelementacccess//businessmethodprovidemultipleelementaccesss
 	 
-	 //businesslibrary
+	 //businesslibrary//usdercannavigatetocampaignlinkbycallingonlyonemethod
 	 public void navigateToCampaignPage() {
 		 Actions act=new Actions(driver);
 		 act.moveToElement(moreLink).perform();
 		 campaignLink.click();
 	 }
      //businessmethodtologout
+//	 public void logOut() {
+//		 waitForPageToLoad(driver);
+//		 
+//		
+//		 Actions act = new Actions(driver);
+//		 act.moveToElement(adminImg).pause(Duration.ofMillis(500)).perform();
+//		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		 wait.until(ExpectedConditions.elementToBeClickable(signOutLink));
+//		 signOutLink.click();
+//	 }
+	 
 	 public void logOut() {
-		 Actions act = new Actions(driver);
-		 act.moveToElement(adminImg).perform();
-		 signOutLink.click();
-	 }
-     
-     
+
+		    try {
+
+		        Alert alert = driver.switchTo().alert();
+
+		        System.out.println(alert.getText());
+
+		        alert.accept();
+
+		    } catch (Exception e) {
+
+		    }
+
+		    WebDriverWait wait =
+		            new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		    wait.until(ExpectedConditions.visibilityOf(adminImg));
+
+		    new Actions(driver)
+		            .moveToElement(adminImg)
+		            .perform();
+
+		    wait.until(ExpectedConditions.elementToBeClickable(signOutLink));
+
+		    signOutLink.click();
+		}
 }

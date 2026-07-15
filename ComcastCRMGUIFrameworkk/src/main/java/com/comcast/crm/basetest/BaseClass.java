@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -23,20 +22,22 @@ import com.comcast.crm.generic.fileutility.ExcelUtility;
 import com.comcast.crm.generic.fileutility.FileUtility;
 import com.comcast.crm.generic.webdriverutility.JavaUtility;
 import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
+import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 import com.comcast.crm.objectrepositoryutility.HomePage;
 import com.comcast.crm.objectrepositoryutility.LoginPage;
 
 public class BaseClass {
-	  /* create object */
-	public DataBaseUtility dbLib=new DataBaseUtility();
-	public FileUtility fLib=new FileUtility();
-	public    ExcelUtility eLib=new ExcelUtility();
-	public	JavaUtility jLib = new JavaUtility();
-	public  WebDriver driver=null;
-	public static WebDriver sdriver=null;
 	
+	// provides utilityobjects
+		/* createobject */
+		public DataBaseUtility dbLib = new DataBaseUtility();
+		public FileUtility fLib = new FileUtility();
+		public ExcelUtility eLib = new ExcelUtility();
+		public JavaUtility jLib = new JavaUtility();
+		public WebDriverUtility wLib = new WebDriverUtility();
+		public WebDriver driver=null;
+		public static WebDriver sdriver=null;//static
 	
-
 
 	@BeforeSuite(groups= {"smokeTest", "regressionTest"})
 	public void configBS() throws SQLException {
@@ -93,7 +94,8 @@ public class BaseClass {
 		dbLib.closeDbconnection();
 		
 	}
+	
 	//@BeforeTest//iftodopreconditionbefordoingparallelexecution
 	
-
 }
+

@@ -12,29 +12,31 @@ public class ContactPage {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
-	@FindBy(name="user_name")
-	private WebElement usernameEdit;
+	@FindBy(linkText="Contacts")
+    private WebElement contactsLink;
+	@FindBy(className  = "dvHeaderText")
+	private WebElement headerMsg1;
+    
 	
-	@FindBy(name="user_password")
-	private WebElement passwordEdt;
+
+	@FindBy(xpath = "//img[@alt='Create Contact...']")
+	private WebElement createNewContactBtn;
 	
-	@FindBy(id="submitButton")
-	private WebElement loginBtn;
-	public WebDriver getDriver() {
-		return driver;
+	 public WebElement getHeaderMsg1() {
+			return headerMsg1;
+		}
+	public WebElement getCreateNewContactBtn() {
+		return createNewContactBtn;
 	}
 
-	public WebElement getUsernameEdit() {
-		return usernameEdit;
+	public WebElement getContactLink() {
+		return contactsLink;
 	}
 
-	public WebElement getPasswordEdt() {
-		return passwordEdt;
-	}
 
-	public WebElement getLoginBtn() {
-		return loginBtn;
-	}
+	
+
+
 
 	
 	

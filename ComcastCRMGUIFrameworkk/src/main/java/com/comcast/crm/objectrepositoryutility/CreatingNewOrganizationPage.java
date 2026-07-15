@@ -29,6 +29,25 @@ public class CreatingNewOrganizationPage {
 
 	@FindBy(name = "industry")
 	private WebElement industryDB;
+	
+	@FindBy(id="phone")
+	private WebElement phoneNumberEdit;
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public WebElement getTypeDB() {
+		return typeDB;
+	}
+
+	public WebElement getIndustryDB() {
+		return industryDB;
+	}
+
+	public WebElement getPhoneNumberEdit() {
+		return phoneNumberEdit;
+	}
 
 	public WebElement getOrgNameEdit() {
 		return orgNameEdit;
@@ -52,13 +71,19 @@ public class CreatingNewOrganizationPage {
 		
 		Select sel1 = new Select(industryDB);
 		sel1.selectByVisibleText(industry);
-		saveBtn.click();
+		
 		
 		Select sel2 = new Select(typeDB);
 		sel2.selectByVisibleText(type);
 		saveBtn.click();
-		
+	}
+		public void createOrg(String orgName, String phoneNumber) {
+			orgNameEdit.sendKeys(orgName);
+			phoneNumberEdit.sendKeys(phoneNumber);
+			saveBtn.click();
+			
+		}
 
 	}
 
-}
+
