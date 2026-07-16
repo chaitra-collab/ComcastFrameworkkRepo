@@ -90,15 +90,7 @@ public class CreateContactTest extends BaseClass {
 				Assert.assertEquals(status, true);
 				//System.out.println("hi");//anymodificationandpushingtogitautomaticallystartsbuildinjenkins
 				//1 12 * * 1 everymoday12 01startsexecutesinjenkins
-				String URL=System.getProperty("url");
-				//passfromecipsedefaultdatachrome
-				String BROWSER=System.getProperty("browser","chrome");
-				String USERNAME=System.getProperty("username");
-				String PASSWORD=System.getProperty("password");
-				System.out.println(URL);
-				System.out.println(BROWSER);
-				System.out.println(USERNAME);
-				System.out.println(PASSWORD);
+				
 				
 	}
 
