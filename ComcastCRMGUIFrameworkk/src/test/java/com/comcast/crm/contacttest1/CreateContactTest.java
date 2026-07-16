@@ -88,6 +88,7 @@ public class CreateContactTest extends BaseClass {
 				String actHeader=cp.getHeaderMsg1().getText();
 				boolean status = actHeader.contains(lastName);
 				Assert.assertEquals(status, true);
+				System.out.println("hello");//anymodificationandpushingtogitautomaticallystartsbuildinjenkins
 				
 	}
 

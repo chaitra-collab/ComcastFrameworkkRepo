@@ -63,6 +63,9 @@ public class CreateOrganizationTest extends BaseClass {
 		CreatingNewOrganizationPage cnop = new CreatingNewOrganizationPage(driver);
 		
 		cnop.createOrg(orgName);
+		System.out.println(driver.getCurrentUrl());
+		System.out.println(driver.getTitle());
+		System.out.println(driver.getPageSource().contains("dvHeaderText"));
 		UtilityClassObject.getTest().log(Status.INFO, orgName + "====>Create a new Org");
 		
 		// verify Header msg Expected Result

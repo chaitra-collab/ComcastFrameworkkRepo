@@ -23,6 +23,7 @@ import com.comcast.crm.generic.databaseutility.DataBaseUtility;
 import com.comcast.crm.generic.fileutility.ExcelUtility;
 import com.comcast.crm.generic.fileutility.FileUtility;
 import com.comcast.crm.generic.webdriverutility.JavaUtility;
+import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
 import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 import com.comcast.crm.objectrepositoryutility.HomePage;
 import com.comcast.crm.objectrepositoryutility.LoginPage;
@@ -74,6 +75,7 @@ public class BaseClass {
 			driver = new ChromeDriver();
 		}
 		driver.manage().window().maximize();
+		UtilityClassObject.setDriver(driver);
 	}
 
 	@BeforeMethod(groups = { "smokeTest", "regressionTest" })
