@@ -36,25 +36,34 @@ public class BaseClass {
 	public ExcelUtility eLib = new ExcelUtility();
 	public JavaUtility jLib = new JavaUtility();
 	public WebDriverUtility wLib = new WebDriverUtility();
-	public WebDriver driver=null;
-	public static WebDriver sdriver=null;//static
+	public WebDriver driver = null;
+	public static WebDriver sdriver = null;// static
 
-	
 	@BeforeSuite(groups = { "smokeTest", "regressionTest" })
 	public void configBS() throws SQLException {
 
 		System.out.println("=====connect to DB,Report Config=====");
 		dbLib.getDbconnection();
-	
+
 	}
 
-	//@Parameters("BROWSER")
-	@BeforeClass(groups= {"smokeTest","regressionTest"})
+	// @Parameters("BROWSER")
+	@BeforeClass(groups = { "smokeTest", "regressionTest" })
 
 	public void configBC() throws Throwable {
 		System.out.println("=====Launch a browser===== ");
-		String BROWSER = fLib.getDataFromPropertiesFile("browser");
-        // String BROWSER=browser;
+		// realtimewealwaysgetdatafromcommandlineandparameterfromruntimeJENKINSALWAYSTHEPARAMETERFRPOMCMDLINE
+		// cd C:\Users\HP\git\Automation_TL\ComcastCRMGUIFrameworkk
+		// toeexceutetetscriptfromcmdlinetopassparameteratruntime
+		// mvn test -Durl=http://localhost:8888/index.php -Dbrowser=firefox
+		// -Dusername=admin -Dpassword=admin
+
+		// anotheroptionreceiveparameterfrompropertyfilefLib.getDataFromPropertiesFile("password")ifuserwantstoexeutefromeclipseforgotfrmcmdline
+		// system.getpropertyusingdatafrmpropertyfilejenkinsalwaysusesystem.getpropertyruntimemvnparameterandpropertyfileframeworkbecomesflexible
+		String BROWSER = System.getProperty("browser", fLib.getDataFromPropertiesFile("browser"));// toreaddatafromcmdline
+		// toreaddatafromcommandlineString BROWSER =
+		// fLib.getDataFromPropertiesFile("browser");
+		// String BROWSER=browser;
 		if (BROWSER.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
 		} else if (BROWSER.equalsIgnoreCase("firefox")) {
@@ -64,15 +73,21 @@ public class BaseClass {
 		} else {
 			driver = new ChromeDriver();
 		}
-       driver.manage().window().maximize();
+		driver.manage().window().maximize();
 	}
 
 	@BeforeMethod(groups = { "smokeTest", "regressionTest" })
 	public void configBM() throws Throwable {
 		System.out.println("==login== ");
-		String URL = fLib.getDataFromPropertiesFile("url");
-		String USERNAME = fLib.getDataFromPropertiesFile("username");
-		String PASSWORD = fLib.getDataFromPropertiesFile("password");
+
+		String URL = System.getProperty("url", fLib.getDataFromPropertiesFile("url"));// toreaddatafromcmdline
+		// String URL = fLib.getDataFromPropertiesFile("url");
+
+		String USERNAME = System.getProperty("username", fLib.getDataFromPropertiesFile("username"));// toreaddatafromcmdline
+		// String USERNAME = fLib.getDataFromPropertiesFile("username");
+
+		String PASSWORD = System.getProperty("password", fLib.getDataFromPropertiesFile("password"));// toreaddatafromcmdline
+		// String PASSWORD = fLib.getDataFromPropertiesFile("password");
 
 		LoginPage lp = new LoginPage(driver);// constructortatkecareofinitialization
 		lp.loginToapp(URL, USERNAME, PASSWORD);
@@ -84,8 +99,7 @@ public class BaseClass {
 		System.out.println("==logout==");
 		HomePage hp = new HomePage(driver);
 		hp.logOut();
-		
-		  
+
 	}
 
 	@AfterClass(groups = { "smokeTest", "regressionTest" })
@@ -98,7 +112,7 @@ public class BaseClass {
 	public void configAS() throws SQLException {
 		System.out.println("====close DB,Report Backup====");
 		dbLib.closeDbconnection();
-		
+
 	}
 
 	// @BeforeTestrequiredifpreconditionreqbeforedongparallelexecution

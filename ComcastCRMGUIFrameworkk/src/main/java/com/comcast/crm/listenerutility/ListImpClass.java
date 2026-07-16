@@ -68,14 +68,29 @@ public class ListImpClass implements ITestListener, ISuiteListener {
 		// File srcFile=eDriver.getScreenshotAs(OutputType.FILE);
 
 //		//step-2:use getScreenshotAs method to get file type of screenshot
-		TakesScreenshot eDriver = (TakesScreenshot) BaseClass.sdriver;
-		String filePath=eDriver.getScreenshotAs(OutputType.BASE64);
-		String time = new Date().toString().replace(" ", "_").replaceAll(":", "_");
-        test.addScreenCaptureFromBase64String(filePath,testName+"_"+time);
-		 test.log(Status.FAIL ,result.getMethod().getMethodName()+"===>FAILED<===");
-	}
+//		TakesScreenshot eDriver = (TakesScreenshot) BaseClass.sdriver;
+//		String filePath=eDriver.getScreenshotAs(OutputType.BASE64);
+//		String time = new Date().toString().replace(" ", "_").replaceAll(":", "_");
+//        test.addScreenCaptureFromBase64String(filePath,testName+"_"+time);
+//		 test.log(Status.FAIL ,result.getMethod().getMethodName()+"===>FAILED<===");
+		  if (BaseClass.sdriver == null) {
+		        System.out.println("Driver is null. Screenshot cannot be captured.");
+		        return;
+		    }
 
-	public void onTestSkipped(TestResult result) {
-		
+		    TakesScreenshot ts = (TakesScreenshot) BaseClass.sdriver;
+
+		    String base64 = ts.getScreenshotAs(OutputType.BASE64);
+
+		    String time = new Date().toString().replace(" ", "_").replace(":", "_");
+
+		    UtilityClassObject.getTest().addScreenCaptureFromBase64String(base64, testName + "_" + time);
+
+		    UtilityClassObject.getTest().log(Status.FAIL, result.getThrowable());
+	}
+	
+	public void onTestSkipped(ITestResult result) {
+	    test.log(Status.SKIP, result.getMethod().getMethodName() + " ==> SKIPPED <==");
+			
 	}
 }

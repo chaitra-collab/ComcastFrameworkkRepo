@@ -10,11 +10,6 @@
 				</methods>
 			</class>
 
-			<class name="com.comcast.crm.orgTest1.CreateOrganizationTest">
-				<methods>
-					<include name="createOrganizationTest" />
-				</methods>
-			</class>
 
 		</classes>
 	</test> <!--
